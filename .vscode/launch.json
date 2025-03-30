@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/acm/__init__.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "acm",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "uv",
+            "args": [
+                "run",
+                "acm"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            // "preLaunchTask": "uv-sync"
+        }
+    ]
+}
