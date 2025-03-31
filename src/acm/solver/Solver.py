@@ -89,7 +89,7 @@ class Solver(BaseModel):
 
         for mIdx, machine in enumerate(machines):
             profit = profits[mIdx]
-            current_cash = max(profit, self.evaluate(machine.D, maxCash))
+            current_cash = max(profit, self.evaluate(machine.D, self.case.C))
             profits[mIdx] = current_cash
 
             if current_cash >= machine.P:
