@@ -17,8 +17,6 @@ def main(file):
         click.echo(f"Error: File not found at {inputPath}", err=True)
         return
 
-    click.echo(f"Processing file: {inputPath}")
-
     parser = Parser(filePath=inputPath)
     cases = parser.read()
     # cases = [cases[2]]

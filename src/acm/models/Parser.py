@@ -32,6 +32,10 @@ class Parser(BaseModel):
             caseMachines = []
 
             readLines = 0
+            lastLine = lines[-1]
+
+            if not re.match(end_pattern, lastLine):
+                raise ValueError("Input file doesn't end with 0 0 0")
             for line in lines:
                 line = line.strip()
                 line = re.sub(r"\s+", " ", line)
