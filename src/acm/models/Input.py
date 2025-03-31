@@ -21,6 +21,12 @@ class Machine(BaseModel):
             )
         return self
 
+    def getLine(self) -> tuple[int, int]:
+        a = self.G
+        b = self.R - self.P - self.G * (self.D + 1)
+
+        return (a, b)
+
     @staticmethod
     def getFields() -> List[str]:
         return list(Machine.model_fields.keys())
@@ -35,6 +41,10 @@ class Case(BaseModel):
 
     @model_validator(mode="after")
     def postCheck(self) -> Self:
+        if len(self.machines) > self.N:
+            raise ValueError(
+                f"The number of Machine in TestCase {self.Id} is larger than N={self.N}"
+            )
         for machine in self.machines:
             if machine.D > self.D:
                 raise ValueError(
